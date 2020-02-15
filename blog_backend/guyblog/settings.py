@@ -1,17 +1,14 @@
 import os
 
+from decouple import config, Csv
+import datetime
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5d1+07j8*d8wu5n2s707jinssc)+rwhm+2#5=gbc%(w1@q!!v3'
-
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# SECRET_KEY = '5d1+07j8*d8wu5n2s707jinssc)+rwhm+2#5=gbc%(w1@q!!v3'
+# DEBUG = True
+SECRET_KEY = config('SECRET_KEY')
+DEBUG = config('DEBUG', cast=bool)
+FRONTEND_URL = config('FRONTEND_URL')
 
 ALLOWED_HOSTS = []
 
@@ -19,7 +16,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'blog',
+    'api',
     'rest_framework',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,7 +36,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'blog_project.urls'
+ROOT_URLCONF = 'guyblog.urls'
 
 TEMPLATES = [
     {
@@ -57,7 +54,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'blog_project.wsgi.application'
+WSGI_APPLICATION = 'guyblog.wsgi.application'
 
 
 # Database
