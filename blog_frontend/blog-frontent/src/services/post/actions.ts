@@ -1,38 +1,38 @@
-import { postConstants } from "./constants";
-import { postService } from "./index";
+import { postConstants } from './constants'
+import { postService } from './index'
 
 export interface IReduxBaseAction {
-  type: postConstants;
+  type: postConstants
 }
 
-export const offLineActions = {
-  GetPosts
-};
+// export const offLineActions = {
+//   GetPosts
+// };
 
-function GetPosts(token: string) {
-  return (dispatch: any) => {
-    dispatch(request());
-    postService.GetPosts(token).then(
-      posts => {
-        dispatch(success(posts));
-      },
-      error => {
-        dispatch(failure(error.toString()));
-        // dispatch(alertActions.error(error.toString()));
-      }
-    );
-  };
+// function GetPosts(token: string) {
+//   return (dispatch: any) => {
+//     dispatch(request());
+//     postService.GetPosts(token).then(
+//       posts => {
+//         dispatch(success(posts));
+//       },
+//       error => {
+//         dispatch(failure(error.toString()));
+//         // dispatch(alertActions.error(error.toString()));
+//       }
+//     );
+//   };
 
-  function request() {
-    return { type: postConstants.POST_REQUEST };
-  }
-  function success(posts: {}) {
-    return { type: postConstants.POST_SUCCESS, posts };
-  }
-  function failure(error: string) {
-    return { type: postConstants.POST_FAILURE, error };
-  }
-}
+//   function request() {
+//     return { type: postConstants.POST_REQUEST };
+//   }
+//   function success(posts: {}) {
+//     return { type: postConstants.POST_SUCCESS, posts };
+//   }
+//   function failure(error: string) {
+//     return { type: postConstants.POST_FAILURE, error };
+//   }
+// }
 
 // export interface IReduxGetPostsAction extends IReduxBaseAction {
 //   type: postConstants.POST_REQUEST;
