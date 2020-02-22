@@ -1,5 +1,14 @@
 from django.contrib import admin
-# from api.models.Post import Post, PostAdmin
+from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
+
+from api import models 
 
 
-# admin.site.register(Post, PostAdmin)
+
+
+class UserAdmin(BaseUserAdmin):
+    ordering = ['id']
+    list_display = ['email','name']
+
+admin.site.register(models.User,UserAdmin)
+
