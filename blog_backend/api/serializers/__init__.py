@@ -1,1 +1,1 @@
-from api.serializers.PostSerializer import PostSerializer
+# from api.serializers.PostSerializer import PostSerializer
