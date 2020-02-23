@@ -7,6 +7,7 @@ from django.urls import reverse
 
 
 
+
 class AdminSiteTests(TestCase):
 
     def setUp(self):
@@ -17,9 +18,9 @@ class AdminSiteTests(TestCase):
         )
         self.client.force_login(self.admin_user)
         self.user = get_user_model().objects.create_user(
-            email='admin@guy.com',
+            email='test@guy.com',
             password='password123',
-            name='Test use full name'
+            name='Test user full name'
         )
     
     def test_users_listed(self):
@@ -29,3 +30,11 @@ class AdminSiteTests(TestCase):
         
         self.assertContains(res, self.user.name)
         self.assertContains(res,self.user.email)
+
+    def test_user_change_page(self):
+        """Test that user edit  page works"""
+        url=reverse('admin:api_user_change',args=[self.user.id])
+        #/admin/api/user/
+        res=self.client.get(url)
+       
+        self.assertEqual(res.status_code,200)
