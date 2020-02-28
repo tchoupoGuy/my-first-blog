@@ -26,7 +26,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     # 'rest_auth',
     # 'rest_auth.registration'
-    'api',
+    'core',
     'user',
 ]
 
@@ -110,4 +110,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = [os.path.join(BASE_DIR, 'static')]
-AUTH_USER_MODEL = 'api.User'
+AUTH_USER_MODEL = 'User'
