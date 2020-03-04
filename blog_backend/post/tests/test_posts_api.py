@@ -41,11 +41,11 @@ class PrivatePostsApiTests(TestCase):
     def test_retrieve_posts(self):
         """Test retrieve posts"""
         Post.objects.create(user=self.user,title='python',text='I love that language',created_date='2020-02-15',published_date='2020-02-28')
-        Post.objects.create(user=self.user,title='python',text='I love that language',created_date='2020-02-28',published_date='2020-02-28')
+        Post.objects.create(user=self.user,title='javascript',text='I love that language',created_date='2020-02-28',published_date='2020-02-28')
 
         res=self.client.get(POSTS_URL)
 
-        posts = Post.objects.all().order_by('-created_date')
+        posts = Post.objects.all().order_by('-title')
         serializer=PostSerializer(posts,many=True)
         self.assertEqual(res.status_code,status.HTTP_200_OK)
         self.assertEqual(res.data,serializer.data)

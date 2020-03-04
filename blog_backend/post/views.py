@@ -19,6 +19,6 @@ class PostViewSet(viewsets.GenericViewSet,mixins.ListModelMixin):
 
     def get_queryset(self):
         """Return objects for the current Authenticated user only"""
-        return self.queryset.filter(user=self.request.user).other_by('-name')
+        return self.queryset.filter(user=self.request.user).other_by('-title')
 
 
